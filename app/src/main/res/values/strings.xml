@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Spark Tuition</string>
+
+    <string name="spark">Spark</string>
+    <string name="tuition">Tuition</string>
+    <string name="spark_tuition_app_name">Spark_Tuition</string>
+    <string name="email_address">Email Address</string>
+    <string name="provide_registered_email">Provide registered email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="or">Or</string>
+    <string name="ok">Ok</string>
+    <string name="do_not_have_an_account">Don\'t have an account? Sign Up</string>
+    <string name="input_your_name">Please input your name.</string>
+    <string name="input_valid_phone">Please input valid phone number.</string>
+    <string name="input_valid_email">Please input valid email address.</string>
+    <string name="input_institute_name">Please input institute name.</string>
+    <string name="input_class_name">Please input class name.</string>
+    <string name="input_correct_password">Please input correct password.</string>
+    <string name="confirm_password_not_matching">Confirm password not matching.</string>
+    <string name="login_successful">Login successful.</string>
+    <string name="account_created_successfully">Account created successfully.</string>
+    <string name="login_failed_with_clone">Login failed for:- &#160;</string>
+    <string name="failed_to_login">Failed to login.</string>
+    <string name="failed_for">Failed for:- &#160;</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="institute">Institute Name</string>
+    <string name="class_name">Class Name</string>
+    <string name="agree_with">Agree with &#160;</string>
+    <string name="terms_and_condition">terms and condition.</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_an_account">Create An Account</string>
+    <string name="have_an_account">Have an account? Sing In</string>
+    <string name="students">Students</string>
+    <string name="our_tutors">Our Tutors</string>
+    <string name="choose_one">Choose One</string>
+    <string name="need_to_accept_terms_and_condition">Need to accept terms and condition to create a new account.</string>
+    <string name="year_three">Year 3</string>
+    <string name="year_four">Year 4</string>
+    <string name="year_five">Year 5</string>
+    <string name="year_six">Year 6</string>
+    <string name="account_approval">Account Approval</string>
+    <string name="need_to_approve_account">You need to approve this account by admin. Please contact with admin for more details. Contact:– 01750–179685</string>
+    <string name="password_reset_request">Password reset request.</string>
+    <string name="your_current_password">Your current password is:-</string>
+    <string name="forgot_mail_sent">A mail has been sent successfully to your email address. Please check your email, Thank You.</string>
+    <string name="do_not_worry_we_just">Don\'t worry we just need to registered email address and it\'s done.</string>
+    <string name="submit">Submit</string>
+    <string name="failed_to_send_password_reset_mail">Sorry, Failed to send password reset mail.</string>
+    <string name="sending_reset_mail">Please wait, We are sending reset mail to your email address.</string>
+    <string name="tutors">Tutors</string>
+    <string name="previous_class">Previous Class</string>
+    <string name="live_class">Live Class</string>
+
+
+    <string name="terms_and_condition_url">https://www.google.com/</string>
+
+
+</resources>
