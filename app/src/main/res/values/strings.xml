@@ -54,7 +54,11 @@
     <string name="tutors">Tutors</string>
     <string name="previous_class">Previous Class</string>
     <string name="live_class">Live Class</string>
-
+    <string name="login_and_try_again">Please login and try again later.</string>
+    <string name="not_eligible_to_access_this_class">Sorry, you are not eligible to access this class. Please press the class name that you submitted in account registration time.</string>
+    <string name="class_selection">Class Selection</string>
+    <string name="live_chat">Live Chat</string>
+    <string name="whatsapp_not_installed">WhatsApp app not installed in your phone.</string>
 
     <string name="terms_and_condition_url">https://www.google.com/</string>
 

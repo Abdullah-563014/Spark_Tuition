@@ -58,12 +58,21 @@
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"/>
-            <EditText
+<!--            <EditText-->
+<!--                android:id="@+id/classEditText"-->
+<!--                style="@style/MyEditTextStyle"-->
+<!--                android:drawableStart="@drawable/ic_class"-->
+<!--                android:hint="@string/class_name"-->
+<!--                android:inputType="text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_45sdp"/>-->
+            <habibur.rahman.spark.tuition.ui.custom.DropDownView
                 android:id="@+id/classEditText"
                 style="@style/MyEditTextStyle"
+                android:text="@string/input_class_name"
+                android:textSize="@dimen/_15ssp"
+                android:gravity="center_vertical"
                 android:drawableStart="@drawable/ic_class"
-                android:hint="@string/class_name"
-                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"/>
             <EditText

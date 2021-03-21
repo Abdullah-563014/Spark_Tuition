@@ -31,6 +31,9 @@ object MyExtension {
             }
         }
         val alertDialog: AlertDialog=builder.create()
+        if (alertDialog.window!=null) {
+            alertDialog.window!!.attributes.windowAnimations=R.style.DialogTheme
+        }
         alertDialog.show()
     }
 

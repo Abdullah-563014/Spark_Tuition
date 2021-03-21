@@ -23,21 +23,21 @@
         <Button
             android:id="@+id/yearFourButton"
             style="@style/MyButtonStyle"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/year_four"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"/>
         <Button
             android:id="@+id/yearFiveButton"
             style="@style/MyButtonStyle"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/year_five"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"/>
         <Button
             android:id="@+id/yearSixButton"
             style="@style/MyButtonStyle"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/year_six"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"/>

@@ -26,6 +26,7 @@ class RegistrationActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityRegistrationBinding
     private lateinit var viewModel: RegistrationActivityViewModel
     private var checkStatus: Boolean=false
+    private val options: ArrayList<String> = ArrayList()
 
 
 
@@ -36,6 +37,12 @@ class RegistrationActivity : AppCompatActivity(), View.OnClickListener {
         viewModel=ViewModelProvider(this,factory).get(RegistrationActivityViewModel::class.java)
         setContentView(binding.root)
 
+
+
+        for (i in 3..6) {
+            options.add("Year $i")
+        }
+        binding.classEditText.setOptions(options)
 
         initAll()
 
@@ -50,14 +57,11 @@ class RegistrationActivity : AppCompatActivity(), View.OnClickListener {
         val fadingCircle: Sprite = FadingCircle()
         binding.registrationSpinKit.setIndeterminateDrawable(fadingCircle)
         binding.registrationSpinKit.visibility=View.GONE
-        binding.termsAndConditionCheckBox.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener{
-            override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean) {
-                p0?.let {
-                    checkStatus=p1
-                }
+        binding.termsAndConditionCheckBox.setOnCheckedChangeListener { p0, p1 ->
+            p0?.let {
+                checkStatus = p1
             }
-
-        })
+        }
     }
 
     private fun startingOperation() {
@@ -88,7 +92,7 @@ class RegistrationActivity : AppCompatActivity(), View.OnClickListener {
             binding.instituteEditText.isFocusable = true
             return
         }
-        if (className.isEmpty()) {
+        if (className.isEmpty() || className.equals(resources.getString(R.string.input_class_name),true)) {
             binding.classEditText.error=resources.getString(R.string.input_class_name)
             binding.classEditText.isFocusable = true
             return

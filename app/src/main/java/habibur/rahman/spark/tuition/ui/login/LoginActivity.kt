@@ -109,6 +109,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         if (inputtedPassword.equals(password, false)) {
                             if (activeStatus.equals("true", false)) {
                                 viewModel.insert(userInfoModel)
+                                Constants.userInfoModel=userInfoModel
                                 shortMessage(resources.getString(R.string.login_successful))
                                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                                 finish()
