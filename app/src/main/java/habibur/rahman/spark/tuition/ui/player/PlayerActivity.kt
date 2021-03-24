@@ -29,7 +29,7 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
     private var liveChatNumber: String="+8801750179685"
     private var currentWindow = 0
     private var playbackPosition: Long = 0
-    private val mediaLink: String="http://192.168.100.100/spark_tuition/uploads/my_video.mp4"
+    private var mediaLink: String="http://192.168.100.101/spark_tuition/uploads/my_video.mp4"
 //    private val mediaLink: String="https://media.geeksforgeeks.org/wp-content/uploads/20201217163353/Screenrecorder-2020-12-17-16-32-03-350.mp4"
 
 
@@ -39,6 +39,10 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
 
+        if (intent.extras!=null) {
+            isLiveVideo=intent.extras!!.getBoolean(Constants.videoPlayModeIsLive)
+            mediaLink= intent.extras!!.getString(Constants.videoUrl)!!
+        }
 
         initAll()
 
@@ -51,19 +55,21 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initPlayer() {
         try {
-            resizePlayerHeight(resources.configuration.orientation)
+//            resizePlayerHeight(resources.configuration.orientation)
             if (isLiveVideo) {
                 binding.exoPlayerId.setShowShuffleButton(false)
                 binding.exoPlayerId.setShowSubtitleButton(false)
                 binding.exoPlayerId.setShowVrButton(false)
                 binding.exoPlayerId.setRepeatToggleModes(0)
                 binding.exoPlayerId.useController=false
+                resizePlayerHeight(Configuration.ORIENTATION_PORTRAIT)
             } else {
                 binding.exoPlayerId.setShowShuffleButton(true)
                 binding.exoPlayerId.setShowSubtitleButton(true)
                 binding.exoPlayerId.setShowVrButton(true)
                 binding.exoPlayerId.setRepeatToggleModes(0)
                 binding.exoPlayerId.useController=true
+                resizePlayerHeight(Configuration.ORIENTATION_LANDSCAPE)
             }
             simpleExoPlayer=SimpleExoPlayer.Builder(this).build()
             binding.exoPlayerId.player=simpleExoPlayer
@@ -108,7 +114,7 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun resizePlayerHeight(orientationState: Int) {
         val layoutParams: ViewGroup.LayoutParams? =binding.exoPlayerId.layoutParams
-        if (orientationState==Configuration.ORIENTATION_LANDSCAPE) {
+        if (orientationState==Configuration.ORIENTATION_LANDSCAPE || !isLiveVideo) {
             layoutParams?.height=ViewGroup.LayoutParams.MATCH_PARENT
             binding.liveChat.visibility=View.GONE
         } else {

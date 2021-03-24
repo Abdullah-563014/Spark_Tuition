@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/videoRecyclerRootLayout"
+    android:background="@drawable/rounded_background"
+    android:layout_marginTop="@dimen/_2sdp"
+    android:layout_marginBottom="@dimen/_2sdp"
+    android:padding="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/videoTitleTextView"
+        style="@style/MyTitleTextStyle"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/videoTimeStampTextView"
+        style="@style/MySmallTextStyle"
+        app:layout_constraintTop_toBottomOf="@+id/videoTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/videoDurationTextView"
+        style="@style/MySmallTextStyle"
+        app:layout_constraintTop_toBottomOf="@+id/videoTitleTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:src="@drawable/ic_timer"
+        app:layout_constraintTop_toBottomOf="@+id/videoTitleTextView"
+        app:layout_constraintEnd_toStartOf="@+id/videoDurationTextView"
+        android:layout_marginEnd="@dimen/_3sdp"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
