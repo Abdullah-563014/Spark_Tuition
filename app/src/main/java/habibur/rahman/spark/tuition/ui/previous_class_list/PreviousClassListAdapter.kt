@@ -55,7 +55,8 @@ class PreviousClassListAdapter(context: Context, list: List<VideoModel>): Recycl
             p0?.let {
                 when(it.id) {
                     R.id.videoRecyclerRootLayout -> {
-                        previousVideoIntent.putExtra(Constants.videoUrl,list[adapterPosition].VideoUrl)
+                        previousVideoIntent.putExtra(Constants.classVideoPosition,adapterPosition)
+                        previousVideoIntent.putExtra(Constants.videoPlayModeIsLive,false)
                         context.startActivity(previousVideoIntent)
                     }
                 }

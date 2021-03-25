@@ -10,6 +10,8 @@ object Constants {
 
     val videoPlayModeIsLive: String="videoPlayModeIsLive"
     val videoUrl: String="VideoUrl"
+    val classVideoPosition: String="ClassVideoPosition"
+    val savedMediaLink: String="SavedMediaLink"
 
     var userInfoModel: UserInfoModel?=null
 

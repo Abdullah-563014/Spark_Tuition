@@ -6,13 +6,18 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.FadingCircle
+import com.google.gson.Gson
 import com.google.gson.JsonElement
 import habibur.rahman.spark.tuition.R
 import habibur.rahman.spark.tuition.databinding.ActivityPreviousClassListBinding
+import habibur.rahman.spark.tuition.model.SavedMediaLinkModel
 import habibur.rahman.spark.tuition.model.TutorInfoModel
 import habibur.rahman.spark.tuition.model.VideoModel
 import habibur.rahman.spark.tuition.network_database.MyApi
+import habibur.rahman.spark.tuition.utils.Constants
+import habibur.rahman.spark.tuition.utils.Coroutines
 import habibur.rahman.spark.tuition.utils.MyExtension.shortMessage
+import habibur.rahman.spark.tuition.utils.SharedPreUtils
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -73,6 +78,7 @@ class PreviousClassListActivity : AppCompatActivity() {
                             val temporaryJsonObject: JSONObject =innerArray.getJSONObject(i)
                             val videoModel: VideoModel = VideoModel(temporaryJsonObject.getString("Title"), temporaryJsonObject.getString("VideoUrl"), temporaryJsonObject.getString("Duration"), temporaryJsonObject.getString("TimeStamp"), temporaryJsonObject.getString("IsLiveVideo"))
                             list.add(videoModel)
+                            savePreviousClassListToStorage(list)
                         }
                         adapter.notifyDataSetChanged()
                     } else {
@@ -87,6 +93,19 @@ class PreviousClassListActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun savePreviousClassListToStorage(classList: MutableList<VideoModel>) {
+        val savedMediaLinkModel: SavedMediaLinkModel= SavedMediaLinkModel(classList)
+        val gson: Gson = Gson()
+        val stringData: String=gson.toJson(savedMediaLinkModel)
+        Coroutines.io {
+            SharedPreUtils.setStringToStorage(
+                applicationContext,
+                Constants.savedMediaLink,
+                stringData
+            )
+        }
     }
 
 
