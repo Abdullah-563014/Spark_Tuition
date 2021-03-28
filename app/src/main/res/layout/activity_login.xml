@@ -3,18 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/books"
+    android:background="@drawable/sign_in_bg"
+    android:padding="@dimen/_10sdp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
-    <LinearLayout
-        android:background="@color/purple_10"
-        android:padding="@dimen/_10sdp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="@dimen/_25sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -27,7 +24,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_25ssp"
                 android:textStyle="bold"
-                android:fontFamily="serif"
+                android:fontFamily="@font/copper_std"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ImageView
@@ -35,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="@+id/sparkTextViewId"
                 app:layout_constraintBottom_toBottomOf="@+id/sparkTextViewId"
                 app:layout_constraintStart_toEndOf="@+id/sparkTextViewId"
-                android:src="@drawable/ic_launcher"
+                android:src="@drawable/education_icon"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"/>
@@ -47,14 +44,16 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_25ssp"
                 android:textStyle="bold"
-                android:fontFamily="serif"
+                android:fontFamily="@font/copper_std"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <EditText
             android:id="@+id/emailEditText"
             style="@style/MyEditTextStyle"
-            android:layout_marginTop="@dimen/_50sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.35"
             android:drawableStart="@drawable/ic_email"
             android:hint="@string/email_address"
             android:inputType="textEmailAddress"
@@ -63,6 +62,7 @@
         <EditText
             android:id="@+id/passwordEditText"
             style="@style/MyEditTextStyle"
+            app:layout_constraintTop_toBottomOf="@+id/emailEditText"
             android:drawableStart="@drawable/ic_password"
             android:hint="@string/password"
             android:inputType="textPassword"
@@ -71,6 +71,8 @@
         <TextView
             android:id="@+id/forgotPasswordTextView"
             style="@style/MyNormalTextStyle"
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+            app:layout_constraintStart_toStartOf="parent"
             android:text="@string/forgot_password"
             android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginStart="@dimen/_10sdp"
@@ -79,12 +81,20 @@
         <Button
             android:id="@+id/signInButton"
             style="@style/MyButtonStyle"
+            android:background="@drawable/button_background"
+            app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_gravity="center"
+            android:textColor="@color/splash_title_text_color"
             android:text="@string/sign_in"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.45"
             android:layout_height="@dimen/_40sdp"/>
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/signInDivider"
+            app:layout_constraintTop_toBottomOf="@+id/signInButton"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:layout_width="match_parent"
@@ -122,11 +132,11 @@
         <TextView
             android:id="@+id/doNotHaveAccountTextView"
             style="@style/MySmallTextStyle"
+            app:layout_constraintTop_toBottomOf="@+id/signInDivider"
             android:gravity="center"
             android:text="@string/do_not_have_an_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    </LinearLayout>
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/loginSpinKit"
         style="@style/SpinKitView.Large.Circle"

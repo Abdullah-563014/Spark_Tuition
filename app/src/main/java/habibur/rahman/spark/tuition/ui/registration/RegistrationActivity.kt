@@ -102,6 +102,11 @@ class RegistrationActivity : AppCompatActivity(), View.OnClickListener {
             binding.passwordEditText.isFocusable = true
             return
         }
+        if (password.length<8) {
+            binding.passwordEditText.error=resources.getString(R.string.input_minimum_eight_digit_password)
+            binding.passwordEditText.isFocusable = true
+            return
+        }
         if (confirmPassword.isEmpty() || !password.equals(confirmPassword,false)) {
             binding.confirmPasswordEditText.error=resources.getString(R.string.confirm_password_not_matching)
             binding.confirmPasswordEditText.isFocusable = true

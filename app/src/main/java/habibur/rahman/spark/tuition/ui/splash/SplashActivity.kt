@@ -9,6 +9,8 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import habibur.rahman.spark.tuition.R
 import habibur.rahman.spark.tuition.databinding.ActivitySplashBinding
 import habibur.rahman.spark.tuition.ui.login.LoginActivity
+import habibur.rahman.spark.tuition.utils.CommonMethod
+import habibur.rahman.spark.tuition.utils.MyExtension.showDialog
 
 class SplashActivity : AppCompatActivity() {
 
@@ -37,8 +39,12 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
-                startActivity(Intent(this@SplashActivity,LoginActivity::class.java))
-                finish()
+                if (CommonMethod.isNetworkAvailable(this@SplashActivity)) {
+                    startActivity(Intent(this@SplashActivity,LoginActivity::class.java))
+                    finish()
+                } else {
+                    showDialog(resources.getString(R.string.network_connection_status),resources.getString(R.string.no_internet_message))
+                }
             }
 
             override fun onAnimationRepeat(p0: Animation?) {

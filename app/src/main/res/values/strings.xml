@@ -20,6 +20,7 @@
     <string name="input_class_name">Please input class name.</string>
     <string name="input_correct_password">Please input correct password.</string>
     <string name="confirm_password_not_matching">Confirm password not matching.</string>
+    <string name="input_minimum_eight_digit_password">Input minimum 8 digit password.</string>
     <string name="login_successful">Login successful.</string>
     <string name="account_created_successfully">Account created successfully.</string>
     <string name="login_failed_with_clone">Login failed for:- &#160;</string>
@@ -51,15 +52,17 @@
     <string name="submit">Submit</string>
     <string name="failed_to_send_password_reset_mail">Sorry, Failed to send password reset mail.</string>
     <string name="sending_reset_mail">Please wait, We are sending reset mail to your email address.</string>
-    <string name="tutors">Tutors</string>
+    <string name="tutors">Our Tutors</string>
     <string name="previous_class">Previous Class</string>
-    <string name="live_class">Live Class</string>
+    <string name="live_class">LIVE Class</string>
     <string name="login_and_try_again">Please login and try again later.</string>
     <string name="not_eligible_to_access_this_class">Sorry, you are not eligible to access this class. Please press the class name that you submitted in account registration time.</string>
     <string name="class_selection">Class Selection</string>
     <string name="live_chat">Live Chat</string>
     <string name="whatsapp_not_installed">WhatsApp app not installed in your phone.</string>
     <string name="live_support">Live Support</string>
+    <string name="network_connection_status">Network Connection Status</string>
+    <string name="no_internet_message">Not detected any valid internet connection. Please turn on internet connection and try again. Thank you.</string>
 
     <string name="terms_and_condition_url">https://www.google.com/</string>
 

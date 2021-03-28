@@ -32,7 +32,7 @@ class TutorListAdapter(private val context: Context, private var list: List<Tuto
 
         fun bind(item: TutorInfoModel) {
             binding.tutorProfileNameTextView.text=item.name
-            Glide.with(context).load(item.profilePicture).circleCrop().into(binding.tutorProfileImageView)
+            Glide.with(context).load(item.profilePicture).circleCrop().error(R.drawable.tutor_icon).into(binding.tutorProfileImageView)
             binding.tutorProfileRootLayout.setOnClickListener(this)
         }
 

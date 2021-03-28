@@ -19,14 +19,15 @@
         app:layout_constraintDimensionRatio="1:1"
         android:padding="@dimen/_5sdp"
         android:background="@drawable/square_background"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/tutor_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"/>
     <TextView
         android:id="@+id/tutorProfileNameTextView"
-        style="@style/MyNormalTextStyle"
+        style="@style/MyTitleTextStyle"
         app:layout_constraintTop_toBottomOf="@+id/tutorProfileImageView"
         android:gravity="center"
+        android:textColor="@color/splash_title_text_color"
         android:text="@string/tutors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

@@ -3,29 +3,34 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/white_book"
+    android:background="@drawable/live_and_previous_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.class_details.ClassDetailsActivity">
-    <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="@dimen/_10sdp"
-        android:background="@color/purple_10"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <Button
             android:id="@+id/previousClassButton"
             style="@style/MyButtonStyle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.45"
+            android:background="@drawable/pink_and_white_bg_button"
             android:text="@string/previous_class"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.60"
             android:layout_height="@dimen/_40sdp"/>
         <Button
             android:id="@+id/liveClassButton"
             style="@style/MyButtonStyle"
+            android:background="@drawable/button_background"
+            app:layout_constraintTop_toBottomOf="@+id/previousClassButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_25sdp"
+            android:textColor="@color/splash_title_text_color"
             android:text="@string/live_class"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.60"
             android:layout_height="@dimen/_40sdp"/>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,13 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/books"
+    android:background="@drawable/sign_up_bg"
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.registration.RegistrationActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/purple_10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -97,6 +96,7 @@
                 <CheckBox
                     android:id="@+id/termsAndConditionCheckBox"
                     android:textColor="@color/white"
+                    android:buttonTint="@color/white"
                     android:layout_centerVertical="true"
                     android:text="@string/agree_with"
                     android:layout_width="wrap_content"
@@ -114,7 +114,11 @@
             <Button
                 android:id="@+id/signUpButton"
                 style="@style/MyButtonStyle"
+                android:background="@drawable/button_background"
+                android:textColor="@color/splash_title_text_color"
                 android:text="@string/sign_up"
+                android:paddingStart="@dimen/_45sdp"
+                android:paddingEnd="@dimen/_45sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_40sdp"/>
             <androidx.constraintlayout.widget.ConstraintLayout

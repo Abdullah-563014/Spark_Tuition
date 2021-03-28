@@ -3,13 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/books"
+    android:background="@drawable/tutor_list_bg"
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.live_support.LiveSupportActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/purple_10"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -24,7 +23,8 @@
             android:paddingStart="@dimen/_30sdp"
             android:paddingEnd="@dimen/_30sdp"
             android:layout_gravity="center"
-            android:background="@drawable/edit_text_background"
+            android:background="@drawable/pink_rounded_bg"
+            android:textColor="@color/splash_title_text_color"
             android:text="@string/live_support"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_width="wrap_content"

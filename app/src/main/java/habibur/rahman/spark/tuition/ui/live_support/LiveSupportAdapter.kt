@@ -38,7 +38,7 @@ class LiveSupportAdapter(context: Context, list: List<LiveSupportModel>): Recycl
 
         fun bind(item: LiveSupportModel) {
             binding.tutorProfileNameTextView.text=item.Name
-            Glide.with(context).load(item.ProfilePhotoUrl).circleCrop().into(binding.tutorProfileImageView)
+            Glide.with(context).load(item.ProfilePhotoUrl).circleCrop().error(R.drawable.tutor_icon).into(binding.tutorProfileImageView)
             binding.tutorProfileRootLayout.setOnClickListener(this)
         }
 

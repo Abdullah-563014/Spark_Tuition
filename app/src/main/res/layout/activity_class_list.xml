@@ -3,43 +3,56 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/white_book"
+    android:background="@drawable/year_list_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.class_list.ClassListActivity">
-    <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="@dimen/_10sdp"
-        android:background="@color/purple_10"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <Button
             android:id="@+id/yearThreeButton"
             style="@style/MyButtonStyle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.15"
+            android:layout_marginEnd="@dimen/_30sdp"
             android:text="@string/year_three"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.35"
             android:layout_height="@dimen/_40sdp"/>
         <Button
             android:id="@+id/yearFourButton"
             style="@style/MyButtonStyle"
+            android:background="@drawable/light_pink_bg_button"
+            app:layout_constraintTop_toBottomOf="@+id/yearThreeButton"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
             android:text="@string/year_four"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.35"
             android:layout_height="@dimen/_40sdp"/>
         <Button
             android:id="@+id/yearFiveButton"
             style="@style/MyButtonStyle"
+            android:background="@drawable/light_pink_bg_button"
+            app:layout_constraintTop_toBottomOf="@id/yearFourButton"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
             android:text="@string/year_five"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.35"
             android:layout_height="@dimen/_40sdp"/>
         <Button
             android:id="@+id/yearSixButton"
             style="@style/MyButtonStyle"
+            android:background="@drawable/light_pink_bg_button"
+            app:layout_constraintTop_toBottomOf="@id/yearFiveButton"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
             android:text="@string/year_six"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.35"
             android:layout_height="@dimen/_40sdp"/>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

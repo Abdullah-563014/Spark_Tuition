@@ -3,29 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/pencil"
+    android:background="@drawable/student_and_tutor_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
-    <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="@dimen/_10sdp"
-        android:background="@color/purple_10"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <Button
             android:id="@+id/studentsButton"
             style="@style/MyButtonStyle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.30"
+            android:layout_marginStart="@dimen/_20sdp"
             android:text="@string/students"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.50"
             android:layout_height="@dimen/_40sdp"/>
         <Button
             android:id="@+id/ourTutorsButton"
             style="@style/MyButtonStyle"
+            android:background="@drawable/light_pink_bg_button"
+            app:layout_constraintTop_toBottomOf="@+id/studentsButton"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:text="@string/our_tutors"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.50"
             android:layout_height="@dimen/_40sdp"/>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
