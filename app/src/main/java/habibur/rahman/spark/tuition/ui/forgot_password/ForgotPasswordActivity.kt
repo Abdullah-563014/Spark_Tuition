@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import co.nedim.maildroidx.MaildroidX
 import co.nedim.maildroidx.MaildroidXType
 import com.github.ybq.android.spinkit.sprite.CircleSprite
+import com.github.ybq.android.spinkit.sprite.Sprite
+import com.github.ybq.android.spinkit.style.FadingCircle
 import com.google.gson.JsonElement
 import habibur.rahman.spark.tuition.BuildConfig
 import habibur.rahman.spark.tuition.R
@@ -52,8 +54,8 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun initAll() {
-        val circleSprite: CircleSprite= CircleSprite()
-        binding.forgotPasswordSpinKit.setIndeterminateDrawable(circleSprite)
+        val fadingCircle: Sprite = FadingCircle()
+        binding.forgotPasswordSpinKit.setIndeterminateDrawable(fadingCircle)
         binding.forgotPasswordSpinKit.visibility=View.GONE
         binding.forgotPasswordButton.setOnClickListener(this)
     }

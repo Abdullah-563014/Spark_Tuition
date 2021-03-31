@@ -2,14 +2,22 @@ package habibur.rahman.spark.tuition.network_database
 
 import com.google.gson.JsonElement
 import habibur.rahman.spark.tuition.BuildConfig
+import okhttp3.ConnectionSpec
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Response
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 interface MyApi {
+
 
     @GET("get_user_info.php?")
     fun getUserInfo(@Query("Email") email: String): Call<JsonElement>
@@ -28,6 +36,7 @@ interface MyApi {
 
     @GET("get_live_video_list.php?")
     fun getLiveVideoList(): Call<JsonElement>
+
 
 
     companion object{

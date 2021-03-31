@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import co.nedim.maildroidx.MaildroidX
@@ -13,6 +14,7 @@ import co.nedim.maildroidx.callback
 import co.nedim.maildroidx.sendEmail
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.FadingCircle
+import com.google.firebase.database.*
 import com.google.gson.JsonElement
 import habibur.rahman.spark.tuition.R
 import habibur.rahman.spark.tuition.databinding.ActivityLoginBinding
@@ -21,9 +23,10 @@ import habibur.rahman.spark.tuition.ui.MyApplication
 import habibur.rahman.spark.tuition.ui.forgot_password.ForgotPasswordActivity
 import habibur.rahman.spark.tuition.ui.main.MainActivity
 import habibur.rahman.spark.tuition.ui.registration.RegistrationActivity
-import habibur.rahman.spark.tuition.utils.Constants
+import habibur.rahman.spark.tuition.utils.*
 import habibur.rahman.spark.tuition.utils.MyExtension.shortMessage
 import habibur.rahman.spark.tuition.utils.MyExtension.showDialog
+import kotlinx.coroutines.CoroutineScope
 import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,6 +49,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         initAll()
 
+        loadVersionNameFromDatabase()
 
 
 
@@ -62,8 +66,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun startLoginOperation() {
-       val inputtedEmail: String=binding.emailEditText.text.toString().trim()
-       val inputtedPassword: String=binding.passwordEditText.text.toString().trim()
+       val inputtedEmail: String=binding.emailEditText.text.toString()
+       val inputtedPassword: String=binding.passwordEditText.text.toString()
         if (inputtedEmail.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(inputtedEmail).matches()) {
             binding.emailEditText.error=resources.getString(R.string.input_valid_email)
             binding.emailEditText.isFocusable = true
@@ -127,7 +131,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             shortMessage(resources.getString(R.string.input_correct_password))
                         }
                     } else {
-                        shortMessage(resources.getString(R.string.failed_to_login))
+                        shortMessage(rootArray.getJSONObject(1).getString("message"))
                     }
                 } else {
                     shortMessage(resources.getString(R.string.failed_to_login))
@@ -140,6 +144,49 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         })
+    }
+
+    private fun loadVersionNameFromDatabase() {
+        val versionRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("versionName")
+        versionRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var versionName: Double = 1.0
+                if (snapshot.exists() && snapshot.getValue(Double::class.java)!=null) {
+                    versionName = snapshot.getValue(Double::class.java)!!
+                    Coroutines.io {
+                        SharedPreUtils.setStringToStorage(applicationContext,Constants.versionNameKey,versionName.toString())
+                        checkMandatoryUpdate()
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
+    private fun checkMandatoryUpdate() {
+        Coroutines.main {
+            val databaseVersionNameInString: String=SharedPreUtils.getStringFromStorage(applicationContext,Constants.versionNameKey,"1.0")!!
+            val databaseVersionName: Double=databaseVersionNameInString.toDouble()
+            val appVersionNameInString: String=applicationContext.packageManager.getPackageInfo(applicationContext.packageName,0).versionName
+            val appVersionName: Double=appVersionNameInString.toDouble()
+            if (appVersionName<databaseVersionName) {
+                val builder: AlertDialog.Builder=AlertDialog.Builder(this,R.style.MyDialogTheme)
+                    .setCancelable(false)
+                    .setTitle("Found New Version")
+                    .setMessage("Your app is not updated, Please update to latest version.")
+                    .setPositiveButton("Ok") {
+                            p0, p1 -> CommonMethod.openAppLink(this@LoginActivity)
+                    }
+                val alertDialog: AlertDialog=builder.create()
+                if (!isFinishing) {
+                    alertDialog.show()
+                }
+            }
+        }
     }
 
     override fun onClick(p0: View?) {
@@ -166,6 +213,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkMandatoryUpdate()
     }
 
 

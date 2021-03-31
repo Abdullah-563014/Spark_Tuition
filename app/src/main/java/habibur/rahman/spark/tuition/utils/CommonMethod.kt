@@ -1,6 +1,7 @@
 package habibur.rahman.spark.tuition.utils
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -96,6 +97,15 @@ object CommonMethod {
             }
         }
         return false
+    }
+
+    fun openAppLink(context: Context) {
+        val appPackageName: String=context.applicationContext.packageName
+        try {
+            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+        } catch (e: ActivityNotFoundException) {
+            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")))
+        }
     }
 
 

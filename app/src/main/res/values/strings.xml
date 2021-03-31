@@ -3,7 +3,6 @@
 
     <string name="spark">Spark</string>
     <string name="tuition">Tuition</string>
-    <string name="spark_tuition_app_name">Spark_Tuition</string>
     <string name="email_address">Email Address</string>
     <string name="provide_registered_email">Provide registered email</string>
     <string name="password">Password</string>
@@ -22,14 +21,12 @@
     <string name="confirm_password_not_matching">Confirm password not matching.</string>
     <string name="input_minimum_eight_digit_password">Input minimum 8 digit password.</string>
     <string name="login_successful">Login successful.</string>
-    <string name="account_created_successfully">Account created successfully.</string>
     <string name="login_failed_with_clone">Login failed for:- &#160;</string>
     <string name="failed_to_login">Failed to login.</string>
     <string name="failed_for">Failed for:- &#160;</string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
     <string name="institute">Institute Name</string>
-    <string name="class_name">Class Name</string>
     <string name="agree_with">Agree with &#160;</string>
     <string name="terms_and_condition">terms and condition.</string>
     <string name="sign_up">Sign Up</string>

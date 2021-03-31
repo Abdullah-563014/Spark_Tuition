@@ -114,7 +114,7 @@
             <Button
                 android:id="@+id/signUpButton"
                 style="@style/MyButtonStyle"
-                android:background="@drawable/button_background"
+                android:background="@drawable/white_button_bg_with_shadow"
                 android:textColor="@color/splash_title_text_color"
                 android:text="@string/sign_up"
                 android:paddingStart="@dimen/_45sdp"

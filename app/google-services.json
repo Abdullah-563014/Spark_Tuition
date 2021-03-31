@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "152308066999",
+    "project_id": "sparktuition-8a88b",
+    "storage_bucket": "sparktuition-8a88b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152308066999:android:7fbd6b1764944d5902bb32",
+        "android_client_info": {
+          "package_name": "habibur.rahman.spark.tuition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152308066999-12cm4dqkevv2d16tlrfdnvl62klnkae3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJTFJvEzpYM0UNVkKsc-EC2k62fmqt6-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152308066999-12cm4dqkevv2d16tlrfdnvl62klnkae3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
