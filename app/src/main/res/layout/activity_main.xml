@@ -22,7 +22,6 @@
         <Button
             android:id="@+id/ourTutorsButton"
             style="@style/MyButtonStyle"
-            android:background="@drawable/light_pink_bg_button"
             app:layout_constraintTop_toBottomOf="@+id/studentsButton"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="@dimen/_20sdp"

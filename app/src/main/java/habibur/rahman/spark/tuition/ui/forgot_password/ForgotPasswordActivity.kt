@@ -79,10 +79,11 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
                         val email: String = userObject.getJSONObject("message").getString("Email")
                         val password: String = userObject.getJSONObject("message").getString("Password")
                         val activeStatus: String = userObject.getJSONObject("message").getString("ActiveStatus")
+                        val name: String = userObject.getJSONObject("message").getString("Name")
 
                         if (activeStatus.equals("true", false)) {
                             shortMessage(resources.getString(R.string.sending_reset_mail))
-                            sendMail(email,"${resources.getString(R.string.your_current_password)} $password")
+                            sendMail(email,"${resources.getString(R.string.hello)} $name, ${resources.getString(R.string.your_current_password)} $password ${resources.getString(R.string.password_reset_message_last_part)}")
                         } else {
                             binding.forgotPasswordSpinKit.visibility=View.GONE
                             if (!isFinishing) {

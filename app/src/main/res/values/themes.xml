@@ -70,7 +70,7 @@
     <style name="MyButtonStyle">
         <item name="backgroundTint">@null</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:background">@drawable/dark_pink_bg_button</item>
+        <item name="android:background">@drawable/button_background</item>
 <!--        <item name="android:paddingStart">@dimen/_50sdp</item>-->
 <!--        <item name="android:paddingEnd">@dimen/_50sdp</item>-->
         <item name="android:textColor">@color/white</item>
@@ -93,6 +93,7 @@
     <style name="DialogTheme">
         <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
         <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="myPopupMenuTextAppearanceSmall">

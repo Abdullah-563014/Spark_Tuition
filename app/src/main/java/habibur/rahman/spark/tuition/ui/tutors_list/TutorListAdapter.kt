@@ -39,7 +39,7 @@ class TutorListAdapter(private val context: Context, private var list: List<Tuto
         override fun onClick(p0: View?) {
             p0?.let {
                 when(it.id) {
-                    R.id.tutorProfileRootLayout -> context.shortMessage("clicked position:- $adapterPosition")
+//                    R.id.tutorProfileRootLayout -> context.shortMessage("clicked position:- $adapterPosition")
                 }
             }
         }
