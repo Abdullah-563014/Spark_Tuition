@@ -1,5 +1,6 @@
 package habibur.rahman.spark.tuition.local_database
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import habibur.rahman.spark.tuition.model.UserInfoModel
 import kotlinx.coroutines.flow.Flow
@@ -8,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface UserInfoDao {
 
     @Query("SELECT * FROM userInfoTable WHERE id=1 ORDER BY id ASC")
-    fun getUserInfo(): Flow<UserInfoModel>
+    fun getUserInfo(): UserInfoModel
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(userInfoModel: UserInfoModel)

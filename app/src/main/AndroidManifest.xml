@@ -17,7 +17,8 @@
         android:theme="@style/Theme.SparkTuition.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".ui.live_support.LiveSupportActivity"></activity>
+        <activity android:name=".ui.profile.ProfileActivity"></activity>
+        <activity android:name=".ui.live_support.LiveSupportActivity" />
         <activity android:name=".ui.previous_class_list.PreviousClassListActivity" />
         <activity android:name=".ui.class_details.ClassDetailsActivity" />
         <activity android:name=".ui.forgot_password.ForgotPasswordActivity" />

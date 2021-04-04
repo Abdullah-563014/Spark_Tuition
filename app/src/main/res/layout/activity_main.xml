@@ -13,7 +13,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.30"
+            app:layout_constraintVertical_bias="0.25"
             android:layout_marginStart="@dimen/_20sdp"
             android:text="@string/students"
             android:layout_width="0dp"
@@ -27,6 +27,17 @@
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:text="@string/our_tutors"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.50"
+            android:layout_height="@dimen/_40sdp"/>
+        <Button
+            android:id="@+id/profileButton"
+            style="@style/MyButtonStyle"
+            app:layout_constraintTop_toBottomOf="@+id/ourTutorsButton"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/profile"
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.50"
             android:layout_height="@dimen/_40sdp"/>

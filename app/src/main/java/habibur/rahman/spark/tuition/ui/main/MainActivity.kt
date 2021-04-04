@@ -12,6 +12,7 @@ import habibur.rahman.spark.tuition.databinding.ActivityMainBinding
 import habibur.rahman.spark.tuition.model.UserInfoModel
 import habibur.rahman.spark.tuition.ui.MyApplication
 import habibur.rahman.spark.tuition.ui.class_list.ClassListActivity
+import habibur.rahman.spark.tuition.ui.profile.ProfileActivity
 import habibur.rahman.spark.tuition.ui.tutors_list.TutorsListActivity
 import habibur.rahman.spark.tuition.utils.Constants
 
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun initAll() {
         binding.ourTutorsButton.setOnClickListener(this)
         binding.studentsButton.setOnClickListener(this)
+        binding.profileButton.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             when(it.id) {
                 R.id.ourTutorsButton -> startActivity(Intent(this,TutorsListActivity::class.java))
                 R.id.studentsButton -> startActivity(Intent(this,ClassListActivity::class.java))
+                R.id.profileButton -> startActivity(Intent(this,ProfileActivity::class.java))
             }
         }
     }

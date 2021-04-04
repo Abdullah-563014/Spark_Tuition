@@ -4,6 +4,7 @@
     <string name="spark">Spark</string>
     <string name="tuition">Tuition</string>
     <string name="email_address">Email Address</string>
+    <string name="email">Email</string>
     <string name="provide_registered_email">Provide registered email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
@@ -55,6 +56,7 @@
     <string name="login_and_try_again">Please login and try again later.</string>
     <string name="not_eligible_to_access_this_class">Sorry, you are not eligible to access this class. Please press the class name that you submitted in account registration time.</string>
     <string name="class_selection">Class Selection</string>
+    <string name="class_name">Class Name</string>
     <string name="live_chat">Live Chat</string>
     <string name="whatsapp_not_installed">WhatsApp app not installed in your phone.</string>
     <string name="live_support">Live Support</string>
@@ -62,8 +64,8 @@
     <string name="no_internet_message">Not detected any valid internet connection. Please turn on internet connection and try again. Thank you.</string>
     <string name="hello">Hello</string>
     <string name="password_reset_message_last_part">\n Keep secret your password and do not share your password with anyone for security. \n\n Thanks, \n Your Spark Tuition team.</string>
-
-
+    <string name="log_out">Log Out</string>
+    <string name="profile">Profile</string>
 
     <string name="terms_and_condition_url">https://www.google.com/</string>
 

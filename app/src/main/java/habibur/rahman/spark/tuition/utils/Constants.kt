@@ -1,7 +1,5 @@
 package habibur.rahman.spark.tuition.utils
 
-import habibur.rahman.spark.tuition.model.UserInfoModel
-
 object Constants {
 
     val ONESIGNAL_APP_ID: String="c59b6726-3332-4ab7-8d7e-d39e76641e61"
@@ -16,8 +14,9 @@ object Constants {
     val classVideoPosition: String="ClassVideoPosition"
     val savedMediaLink: String="SavedMediaLink"
     val versionNameKey: String="VersionNameKey"
+    val loginStatusKey: String="LoginStatusKey"
 
-    var userInfoModel: UserInfoModel?=null
+
 
 
 

@@ -77,7 +77,8 @@ class PreviousClassListActivity : AppCompatActivity() {
                         val innerArray: JSONArray = videoObject.getJSONArray("message")
                         for (i in 0 until innerArray.length()) {
                             val temporaryJsonObject: JSONObject =innerArray.getJSONObject(i)
-                            val videoModel: VideoModel = VideoModel(temporaryJsonObject.getString("Title"), temporaryJsonObject.getString("VideoUrl"), temporaryJsonObject.getString("Duration"), temporaryJsonObject.getString("TimeStamp"), temporaryJsonObject.getString("IsLiveVideo"))
+                            val lastPartOfUrl=temporaryJsonObject.getString("VideoUrl").substring(8)
+                            val videoModel: VideoModel = VideoModel(temporaryJsonObject.getString("Title"), "https://www.$lastPartOfUrl", temporaryJsonObject.getString("Duration"), temporaryJsonObject.getString("TimeStamp"), temporaryJsonObject.getString("IsLiveVideo"))
                             list.add(videoModel)
                             savePreviousClassListToStorage(list)
                         }

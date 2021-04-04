@@ -1,6 +1,7 @@
 package habibur.rahman.spark.tuition.ui.tutors_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,6 +12,7 @@ import habibur.rahman.spark.tuition.R
 import habibur.rahman.spark.tuition.databinding.ActivityTutorsListBinding
 import habibur.rahman.spark.tuition.model.TutorInfoModel
 import habibur.rahman.spark.tuition.network_database.MyApi
+import habibur.rahman.spark.tuition.utils.Constants
 import habibur.rahman.spark.tuition.utils.MyExtension.shortMessage
 import org.json.JSONArray
 import org.json.JSONObject
@@ -67,7 +69,8 @@ class TutorsListActivity : AppCompatActivity() {
                         val innerArray: JSONArray = userObject.getJSONArray("message")
                         for (i in 0 until innerArray.length()) {
                             val temporaryJsonObject: JSONObject=innerArray.getJSONObject(i)
-                            val tutorInfoModel: TutorInfoModel = TutorInfoModel(temporaryJsonObject.getString("ProfilePhotoUrl"), temporaryJsonObject.getString("Name"))
+                            val lastPartOfUrl=temporaryJsonObject.getString("ProfilePhotoUrl").substring(8)
+                            val tutorInfoModel: TutorInfoModel = TutorInfoModel("https://www.$lastPartOfUrl", temporaryJsonObject.getString("Name"))
                             list.add(i,tutorInfoModel)
                         }
                         adapter.notifyDataSetChanged()
