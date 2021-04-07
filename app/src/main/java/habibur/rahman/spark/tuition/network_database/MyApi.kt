@@ -32,10 +32,10 @@ interface MyApi {
     fun getLiveSupportList(): Call<JsonElement>
 
     @GET("get_previous_video_list.php")
-    fun getPreviousVideoList(): Call<JsonElement>
+    fun getPreviousVideoList(@Query("ClassName") className: String): Call<JsonElement>
 
     @GET("get_live_video_list.php")
-    fun getLiveVideoList(): Call<JsonElement>
+    fun getLiveVideoList(@Query("ClassName") className: String): Call<JsonElement>
 
 
 

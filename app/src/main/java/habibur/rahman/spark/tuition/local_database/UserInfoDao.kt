@@ -11,7 +11,7 @@ interface UserInfoDao {
     @Query("SELECT * FROM userInfoTable WHERE id=1 ORDER BY id ASC")
     fun getUserInfo(): UserInfoModel
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(userInfoModel: UserInfoModel)
 
     @Delete

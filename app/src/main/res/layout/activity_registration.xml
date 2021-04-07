@@ -74,22 +74,48 @@
                 android:drawableStart="@drawable/ic_class"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"/>
-            <EditText
-                android:id="@+id/passwordEditText"
-                style="@style/MyEditTextStyle"
-                android:drawableStart="@drawable/ic_password"
-                android:hint="@string/password"
-                android:inputType="textPassword"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordTextInputLayout"
+                app:passwordToggleEnabled="true"
+                app:hintEnabled="false"
+                app:passwordToggleTint="@color/white"
+                android:textColorHint="@color/white"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_45sdp"/>
-            <EditText
-                android:id="@+id/confirmPasswordEditText"
-                style="@style/MyEditTextStyle"
-                android:drawableStart="@drawable/ic_password"
-                android:hint="@string/confirm_password"
-                android:inputType="textPassword"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/passwordEditText"
+                    style="@style/MyEditTextStyle"
+                    android:drawableStart="@drawable/ic_password"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPasswordTextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_45sdp"/>
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white">
+
+                <EditText
+                    android:id="@+id/confirmPasswordEditText"
+                    style="@style/MyEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:drawableStart="@drawable/ic_password"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/cursor_drawable" />
+            </com.google.android.material.textfield.TextInputLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

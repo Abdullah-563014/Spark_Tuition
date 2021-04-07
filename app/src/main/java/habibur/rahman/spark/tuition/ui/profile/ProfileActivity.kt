@@ -64,6 +64,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.signOutButton -> {
                     Coroutines.io {
                         SharedPreUtils.setBooleanToStorage(this,Constants.loginStatusKey,false)
+                        viewModel.deleteUserInfo()
                         startActivity(Intent(this,LoginActivity::class.java))
                         finishAffinity()
                     }

@@ -83,7 +83,7 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
                         if (activeStatus.equals("true", false)) {
                             shortMessage(resources.getString(R.string.sending_reset_mail))
-                            sendMail(email,"${resources.getString(R.string.hello)} $name, ${resources.getString(R.string.your_current_password)} $password ${resources.getString(R.string.password_reset_message_last_part)}")
+                            sendMail(email,"<p> ${resources.getString(R.string.hello)} $name, <br> ${resources.getString(R.string.your_current_password)} <h1><b>'$password'</b></h1> <br> Keep your password a secret and do not share your password with anyone for security. <br><br> Thanks, <br> Your Spark Tuition team. <br></p>")
                         } else {
                             binding.forgotPasswordSpinKit.visibility=View.GONE
                             if (!isFinishing) {
@@ -119,7 +119,7 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
             .smtpUsername(BuildConfig.SMTP_EMAIL)
             .smtpPassword(BuildConfig.SMTP_PASSWORD)
             .port(BuildConfig.SMTP_PORT)
-            .type(MaildroidXType.PLAIN)
+            .type(MaildroidXType.HTML)
             .to(to)
             .from(BuildConfig.SMTP_EMAIL)
             .subject(resources.getString(R.string.password_reset_request))

@@ -7,6 +7,7 @@ import android.util.Patterns
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import co.nedim.maildroidx.MaildroidX
 import co.nedim.maildroidx.MaildroidXType
@@ -16,6 +17,7 @@ import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.FadingCircle
 import com.google.firebase.database.*
 import com.google.gson.JsonElement
+import habibur.rahman.spark.tuition.BuildConfig
 import habibur.rahman.spark.tuition.R
 import habibur.rahman.spark.tuition.databinding.ActivityLoginBinding
 import habibur.rahman.spark.tuition.model.UserInfoModel
@@ -123,9 +125,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                                 if (!isFinishing) {
                                     showDialog(
                                         resources.getString(R.string.account_approval),
-                                        resources.getString(
-                                            R.string.need_to_approve_account
-                                        )
+                                        "${resources.getString(R.string.need_to_approve_account)} ${BuildConfig.SMTP_EMAIL}"
                                     )
                                 }
                             }

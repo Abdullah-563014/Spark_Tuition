@@ -20,13 +20,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center_vertical"
                 android:text="@string/spark"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_25ssp"
                 android:textStyle="bold"
                 android:fontFamily="@font/copper_std"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="@dimen/_40sdp"/>
             <ImageView
                 android:id="@+id/bookImageViewId"
                 app:layout_constraintTop_toTopOf="@+id/sparkTextViewId"
@@ -59,19 +60,32 @@
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:passwordToggleEnabled="true"
+        app:hintEnabled="false"
+        app:passwordToggleTint="@color/white"
+        android:textColorHint="@color/white"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <EditText
             android:id="@+id/passwordEditText"
             style="@style/MyEditTextStyle"
-            app:layout_constraintTop_toBottomOf="@+id/emailEditText"
             android:drawableStart="@drawable/ic_password"
+            android:textCursorDrawable="@drawable/cursor_drawable"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:id="@+id/forgotPasswordTextView"
             style="@style/MyNormalTextStyle"
-            app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+            app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayout"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/forgot_password"
             android:layout_marginTop="@dimen/_4sdp"

@@ -13,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.FadingCircle
 import com.google.android.exoplayer2.MediaItem
@@ -23,9 +25,13 @@ import habibur.rahman.spark.tuition.R
 import habibur.rahman.spark.tuition.databinding.ActivityPlayerBinding
 import habibur.rahman.spark.tuition.model.SavedMediaLinkModel
 import habibur.rahman.spark.tuition.model.TutorInfoModel
+import habibur.rahman.spark.tuition.model.UserInfoModel
 import habibur.rahman.spark.tuition.model.VideoModel
 import habibur.rahman.spark.tuition.network_database.MyApi
+import habibur.rahman.spark.tuition.ui.MyApplication
 import habibur.rahman.spark.tuition.ui.live_support.LiveSupportActivity
+import habibur.rahman.spark.tuition.ui.previous_class_list.PreviousClassListViewModel
+import habibur.rahman.spark.tuition.ui.previous_class_list.PreviousClassListViewModelFactory
 import habibur.rahman.spark.tuition.utils.CommonMethod
 import habibur.rahman.spark.tuition.utils.Constants
 import habibur.rahman.spark.tuition.utils.Coroutines
@@ -41,6 +47,7 @@ import retrofit2.Response
 class PlayerActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityPlayerBinding
+    private lateinit var viewModel: PlayerActivityViewModel
     private var simpleExoPlayer: SimpleExoPlayer?=null
     private var isLiveVideo: Boolean=false
     private var currentWindow = 0
@@ -48,12 +55,15 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
     private var mediaLink: String?=null
     private var currentClassPosition: Int=0
     private var savedMediaLinkModel: SavedMediaLinkModel?=null
+    private var userInfoModel: UserInfoModel?=null
 //    private val mediaLink: String="https://media.geeksforgeeks.org/wp-content/uploads/20201217163353/Screenrecorder-2020-12-17-16-32-03-350.mp4"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityPlayerBinding.inflate(layoutInflater)
+        val factory: PlayerActivityViewModelFactory = PlayerActivityViewModelFactory((application as MyApplication).appDatabase.userInfoDao())
+        viewModel = ViewModelProvider(this, factory).get(PlayerActivityViewModel::class.java)
         setContentView(binding.root)
 
 
@@ -67,7 +77,7 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
                 currentClassPosition= intent.extras!!.getInt(Constants.classVideoPosition)
                 loadMediaLinkFromStorage()
             } else {
-                loadLiveVideoListFromNetwork()
+                loadUserInfo()
             }
         }
 
@@ -82,6 +92,18 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
         val fadingCircle: Sprite = FadingCircle()
         binding.playerSpinKit.setIndeterminateDrawable(fadingCircle)
         binding.playerSpinKit.visibility= View.GONE
+    }
+
+    private fun loadUserInfo() {
+        viewModel.userInfoLiveData.observe(this,object : Observer<UserInfoModel> {
+            override fun onChanged(t: UserInfoModel?) {
+                t?.let {
+                    userInfoModel=it
+                    loadLiveVideoListFromNetwork()
+                }
+            }
+
+        })
     }
 
     private fun loadMediaLinkFromStorage() {
@@ -105,30 +127,32 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun loadLiveVideoListFromNetwork() {
         binding.playerSpinKit.visibility=View.VISIBLE
-        val call: Call<JsonElement> = MyApi.invoke().getLiveVideoList()
-        call.enqueue(object : Callback<JsonElement> {
-            override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
-                binding.playerSpinKit.visibility=View.GONE
-                if (response.isSuccessful && response.code() == 200) {
-                    val rootArray: JSONArray = JSONArray(response.body().toString())
-                    if (rootArray.getJSONObject(0).getString("status").equals("success", false)) {
-                        val userObject = rootArray.getJSONObject(1)
-                        val innerObject: JSONObject = userObject.getJSONObject("message")
-                        mediaLink=innerObject.getString("VideoUrl")
-                        initPlayer()
-                    } else {
-                        shortMessage(rootArray.getJSONObject(1).getString("message"))
-                        mediaLink=null
+        userInfoModel?.let {
+            val call: Call<JsonElement> = MyApi.invoke().getLiveVideoList(it.className)
+            call.enqueue(object : Callback<JsonElement> {
+                override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
+                    binding.playerSpinKit.visibility=View.GONE
+                    if (response.isSuccessful && response.code() == 200) {
+                        val rootArray: JSONArray = JSONArray(response.body().toString())
+                        if (rootArray.getJSONObject(0).getString("status").equals("success", false)) {
+                            val userObject = rootArray.getJSONObject(1)
+                            val innerObject: JSONObject = userObject.getJSONObject("message")
+                            mediaLink=innerObject.getString("VideoUrl")
+                            initPlayer()
+                        } else {
+                            shortMessage(rootArray.getJSONObject(1).getString("message"))
+                            mediaLink=null
+                        }
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<JsonElement>, t: Throwable) {
-                binding.playerSpinKit.visibility=View.GONE
-                shortMessage("${resources.getString(R.string.failed_for)} ${t.message}")
-            }
+                override fun onFailure(call: Call<JsonElement>, t: Throwable) {
+                    binding.playerSpinKit.visibility=View.GONE
+                    shortMessage("${resources.getString(R.string.failed_for)} ${t.message}")
+                }
 
-        })
+            })
+        }
     }
 
     private fun initPlayer() {

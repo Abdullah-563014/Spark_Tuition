@@ -13,6 +13,10 @@ class ProfileActivityViewModel(private val userInfoDao: UserInfoDao):ViewModel()
         emit(data)
     }
 
+    fun deleteUserInfo() =viewModelScope.launch {
+        userInfoDao.deleteAll()
+    }
+
 
 
 
