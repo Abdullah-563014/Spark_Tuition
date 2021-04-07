@@ -37,6 +37,12 @@ import habibur.rahman.spark.tuition.utils.Constants
 import habibur.rahman.spark.tuition.utils.Coroutines
 import habibur.rahman.spark.tuition.utils.MyExtension.shortMessage
 import habibur.rahman.spark.tuition.utils.SharedPreUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -56,6 +62,7 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
     private var currentClassPosition: Int=0
     private var savedMediaLinkModel: SavedMediaLinkModel?=null
     private var userInfoModel: UserInfoModel?=null
+    private var refreshJob: Job?=null
 //    private val mediaLink: String="https://media.geeksforgeeks.org/wp-content/uploads/20201217163353/Screenrecorder-2020-12-17-16-32-03-350.mp4"
 
 
@@ -139,9 +146,18 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
                             val innerObject: JSONObject = userObject.getJSONObject("message")
                             mediaLink=innerObject.getString("VideoUrl")
                             initPlayer()
+                            refreshJob?.cancel()
+                            refreshJob=null
                         } else {
                             shortMessage(rootArray.getJSONObject(1).getString("message"))
                             mediaLink=null
+                            if (refreshJob?.isActive != true) {
+                                refreshJob?.cancel()
+                                refreshJob=null
+                                refreshForLiveVideo()
+                            } else {
+                                refreshForLiveVideo()
+                            }
                         }
                     }
                 }
@@ -152,6 +168,13 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
             })
+        }
+    }
+
+    private fun refreshForLiveVideo() {
+        refreshJob= CoroutineScope(Main).launch {
+            delay(20000)
+            loadLiveVideoListFromNetwork()
         }
     }
 
@@ -266,6 +289,12 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
         if (Build.VERSION.SDK_INT>=24) {
             releasePlayer()
         }
+    }
+
+    override fun onDestroy() {
+        refreshJob?.cancel()
+        refreshJob=null
+        super.onDestroy()
     }
 
     override fun onClick(p0: View?) {
