@@ -112,7 +112,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             activeStatus
                         )
 
-                        if (inputtedPassword.equals(password, false)) {
+                        if (CommonMethod.decrypt(password).equals(inputtedPassword, false)) {
                             if (activeStatus.equals("true", false)) {
                                 Coroutines.io {
                                     viewModel.insert(userInfoModel)
@@ -125,7 +125,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                                 if (!isFinishing) {
                                     showDialog(
                                         resources.getString(R.string.account_approval),
-                                        "${resources.getString(R.string.need_to_approve_account)} ${BuildConfig.SMTP_EMAIL}"
+                                        resources.getString(R.string.need_to_approve_account)
                                     )
                                 }
                             }
@@ -142,7 +142,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                 binding.loginSpinKit.visibility = View.GONE
-                shortMessage("${resources.getString(R.string.login_failed_with_clone)} ${t.message}")
+                shortMessage("${resources.getString(R.string.login_failed_with_clone)} ${CommonMethod.filterMessage(t.message)}")
             }
 
         })

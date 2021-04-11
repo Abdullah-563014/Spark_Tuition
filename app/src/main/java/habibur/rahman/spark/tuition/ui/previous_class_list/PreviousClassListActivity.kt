@@ -21,6 +21,7 @@ import habibur.rahman.spark.tuition.network_database.MyApi
 import habibur.rahman.spark.tuition.ui.MyApplication
 import habibur.rahman.spark.tuition.ui.class_list.ClassListViewModel
 import habibur.rahman.spark.tuition.ui.class_list.ClassListViewModelFactory
+import habibur.rahman.spark.tuition.utils.CommonMethod
 import habibur.rahman.spark.tuition.utils.Constants
 import habibur.rahman.spark.tuition.utils.Coroutines
 import habibur.rahman.spark.tuition.utils.MyExtension.shortMessage
@@ -116,7 +117,7 @@ class PreviousClassListActivity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                     binding.previousClassListSpinKit.visibility=View.GONE
-                    shortMessage("${resources.getString(R.string.failed_for)} ${t.message}")
+                    shortMessage("${resources.getString(R.string.failed_for)} ${CommonMethod.filterMessage(t.message)}")
                 }
 
             })

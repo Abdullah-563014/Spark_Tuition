@@ -22,6 +22,7 @@ import habibur.rahman.spark.tuition.ui.login.LoginActivity
 import habibur.rahman.spark.tuition.ui.login.LoginActivityViewModel
 import habibur.rahman.spark.tuition.ui.login.LoginActivityViewModelFactory
 import habibur.rahman.spark.tuition.ui.main.MainActivity
+import habibur.rahman.spark.tuition.utils.CommonMethod
 import habibur.rahman.spark.tuition.utils.Constants
 import habibur.rahman.spark.tuition.utils.MyExtension.shortMessage
 import habibur.rahman.spark.tuition.utils.MyExtension.showDialog
@@ -81,20 +82,9 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
                         val activeStatus: String = userObject.getJSONObject("message").getString("ActiveStatus")
                         val name: String = userObject.getJSONObject("message").getString("Name")
 
-                        if (activeStatus.equals("true", false)) {
-                            shortMessage(resources.getString(R.string.sending_reset_mail))
-                            sendMail(email,"<p> ${resources.getString(R.string.hello)} $name, <br> ${resources.getString(R.string.your_current_password)} <h1><b>'$password'</b></h1> <br> Keep your password a secret and do not share your password with anyone for security. <br><br> Thanks, <br> Your Spark Tuition team. <br></p>")
-                        } else {
-                            binding.forgotPasswordSpinKit.visibility=View.GONE
-                            if (!isFinishing) {
-                                showDialog(
-                                    resources.getString(R.string.account_approval),
-                                    resources.getString(
-                                        R.string.need_to_approve_account
-                                    )
-                                )
-                            }
-                        }
+                        shortMessage(resources.getString(R.string.sending_reset_mail))
+                        sendMail(email,"<p> ${resources.getString(R.string.hello)} $name, <br> ${resources.getString(R.string.your_current_password)} <h1><b>'${CommonMethod.decrypt(password)}'</b></h1> <br> Keep your password a secret and do not share your password with anyone for security. <br><br> Thanks, <br> Your Spark Tuition team. <br></p>")
+
                     } else {
                         binding.forgotPasswordSpinKit.visibility=View.GONE
                         shortMessage("${resources.getString(R.string.failed_for)} ${rootArray.getJSONObject(1).getString("message")}")
@@ -107,7 +97,7 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                 binding.forgotPasswordSpinKit.visibility = View.GONE
-                shortMessage("${resources.getString(R.string.login_failed_with_clone)} ${t.message}")
+                shortMessage("${resources.getString(R.string.login_failed_with_clone)} ${CommonMethod.filterMessage(t.message)}")
             }
 
         })

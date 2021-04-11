@@ -164,7 +164,7 @@ class PlayerActivity : AppCompatActivity(), View.OnClickListener {
 
                 override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                     binding.playerSpinKit.visibility=View.GONE
-                    shortMessage("${resources.getString(R.string.failed_for)} ${t.message}")
+                    shortMessage("${resources.getString(R.string.failed_for)} ${CommonMethod.filterMessage(t.message)}")
                 }
 
             })

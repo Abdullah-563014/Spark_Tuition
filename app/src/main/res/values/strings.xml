@@ -22,9 +22,9 @@
     <string name="confirm_password_not_matching">Confirm password not matching.</string>
     <string name="input_minimum_eight_digit_password">Input minimum 8 digit password.</string>
     <string name="login_successful">Login successful.</string>
-    <string name="login_failed_with_clone">Login failed for:- &#160;</string>
+    <string name="login_failed_with_clone">Login failed for: &#160;</string>
     <string name="failed_to_login">Failed to login.</string>
-    <string name="failed_for">Failed for:- &#160;</string>
+    <string name="failed_for">Failed for: &#160;</string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
     <string name="institute">Institute Name</string>
@@ -42,9 +42,9 @@
     <string name="year_five">Year 5</string>
     <string name="year_six">Year 6</string>
     <string name="account_approval">Account Approval</string>
-    <string name="need_to_approve_account">You need to approve this account by admin. Please contact with admin for more details. Contact:– </string>
+    <string name="need_to_approve_account">You need to approve this account by admin. Please contact with admin for more details. Contact: sparktuitionofficial@gmail.com</string>
     <string name="password_reset_request">Password reset request.</string>
-    <string name="your_current_password">\n Your current password is:-</string>
+    <string name="your_current_password">\n Your current password is:</string>
     <string name="forgot_mail_sent">A mail has been sent successfully to your email address. Please check your email, Thank You.</string>
     <string name="do_not_worry_we_just">Don\'t worry we just need to registered email address and it\'s done.</string>
     <string name="submit">Submit</string>

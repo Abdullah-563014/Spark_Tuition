@@ -15,6 +15,7 @@ object Constants {
     val savedMediaLink: String="SavedMediaLink"
     val versionNameKey: String="VersionNameKey"
     val loginStatusKey: String="LoginStatusKey"
+    val ALGORITHM: String = "AES"
 
 
 

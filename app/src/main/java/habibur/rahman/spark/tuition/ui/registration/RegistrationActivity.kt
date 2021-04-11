@@ -14,6 +14,7 @@ import habibur.rahman.spark.tuition.R
 import habibur.rahman.spark.tuition.databinding.ActivityRegistrationBinding
 import habibur.rahman.spark.tuition.ui.MyApplication
 import habibur.rahman.spark.tuition.ui.login.LoginActivity
+import habibur.rahman.spark.tuition.utils.CommonMethod
 import habibur.rahman.spark.tuition.utils.CommonMethod.openUrl
 import habibur.rahman.spark.tuition.utils.MyExtension.shortMessage
 import org.json.JSONArray
@@ -117,7 +118,7 @@ class RegistrationActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
         binding.registrationSpinKit.visibility=View.VISIBLE
-        val call: Call<JsonElement> = viewModel.createNewAccount(name,phone,email,password,instituteName,className,"false")
+        val call: Call<JsonElement> = viewModel.createNewAccount(name,phone,email,CommonMethod.encrypt(password),instituteName,className,"false")
         call.enqueue(object : Callback<JsonElement> {
             override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                 binding.registrationSpinKit.visibility=View.GONE
@@ -133,7 +134,7 @@ class RegistrationActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                 binding.registrationSpinKit.visibility=View.GONE
-                shortMessage("${resources.getString(R.string.failed_for)} ${t.message}")
+                shortMessage("${resources.getString(R.string.failed_for)} ${CommonMethod.filterMessage(t.message)}")
             }
 
         })

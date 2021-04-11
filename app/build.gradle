@@ -121,5 +121,8 @@ dependencies {
     // for onesignal
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 
+    // for encrypt and decrypt
+    implementation 'com.scottyab:aescrypt:0.0.1'
+
 
 }

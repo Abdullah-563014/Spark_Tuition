@@ -17,26 +17,36 @@
         android:theme="@style/Theme.SparkTuition.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".ui.profile.ProfileActivity"></activity>
-        <activity android:name=".ui.live_support.LiveSupportActivity" />
-        <activity android:name=".ui.previous_class_list.PreviousClassListActivity" />
-        <activity android:name=".ui.class_details.ClassDetailsActivity" />
-        <activity android:name=".ui.forgot_password.ForgotPasswordActivity" />
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/Theme.SparkTuition.SpecificTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.tutors_list.TutorsListActivity" />
-        <activity android:name=".ui.class_list.ClassListActivity" />
-        <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".ui.registration.RegistrationActivity" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/Theme.SparkTuition.SpecificTheme" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:theme="@style/Theme.SparkTuition.SpecificTheme" />
+        <activity
+            android:name=".ui.registration.RegistrationActivity"
+            android:theme="@style/Theme.SparkTuition.SpecificTheme" />
+        <activity
+            android:name=".ui.forgot_password.ForgotPasswordActivity"
+            android:theme="@style/Theme.SparkTuition.SpecificTheme"/>
         <activity
             android:name=".ui.player.PlayerActivity"
             android:configChanges="keyboard|orientation|screenLayout|screenSize" />
+        <activity android:name=".ui.tutors_list.TutorsListActivity" />
+        <activity android:name=".ui.class_list.ClassListActivity" />
+        <activity android:name=".ui.profile.ProfileActivity" />
+        <activity android:name=".ui.live_support.LiveSupportActivity" />
+        <activity android:name=".ui.previous_class_list.PreviousClassListActivity" />
+        <activity android:name=".ui.class_details.ClassDetailsActivity" />
     </application>
 
 </manifest>

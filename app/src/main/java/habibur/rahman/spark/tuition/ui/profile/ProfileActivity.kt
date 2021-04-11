@@ -3,6 +3,7 @@ package habibur.rahman.spark.tuition.ui.profile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,9 @@ import habibur.rahman.spark.tuition.ui.MyApplication
 import habibur.rahman.spark.tuition.ui.login.LoginActivity
 import habibur.rahman.spark.tuition.ui.login.LoginActivityViewModel
 import habibur.rahman.spark.tuition.ui.login.LoginActivityViewModelFactory
+import habibur.rahman.spark.tuition.utils.CommonMethod
+import habibur.rahman.spark.tuition.utils.CommonMethod.decrypt
+import habibur.rahman.spark.tuition.utils.CommonMethod.encrypt
 import habibur.rahman.spark.tuition.utils.Constants
 import habibur.rahman.spark.tuition.utils.Coroutines
 import habibur.rahman.spark.tuition.utils.SharedPreUtils
@@ -35,6 +39,8 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
         initAll()
 
         getUserInfo()
+
+
 
 
     }

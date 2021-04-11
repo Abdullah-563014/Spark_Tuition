@@ -14,6 +14,7 @@ import habibur.rahman.spark.tuition.model.LiveSupportModel
 import habibur.rahman.spark.tuition.model.TutorInfoModel
 import habibur.rahman.spark.tuition.network_database.MyApi
 import habibur.rahman.spark.tuition.ui.tutors_list.TutorListAdapter
+import habibur.rahman.spark.tuition.utils.CommonMethod
 import habibur.rahman.spark.tuition.utils.MyExtension.shortMessage
 import org.json.JSONArray
 import org.json.JSONObject
@@ -85,7 +86,7 @@ class LiveSupportActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                 binding.liveSupportListSpinKit.visibility=View.GONE
-                shortMessage("${resources.getString(R.string.failed_for)} ${t.message}")
+                shortMessage("${resources.getString(R.string.failed_for)} ${CommonMethod.filterMessage(t.message)}")
             }
 
         })

@@ -13,8 +13,9 @@ import android.os.Build
 import android.util.DisplayMetrics
 import android.view.WindowInsets
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import com.google.gson.Gson
+import com.scottyab.aescrypt.AESCrypt
+import habibur.rahman.spark.tuition.BuildConfig
 import habibur.rahman.spark.tuition.R
 import habibur.rahman.spark.tuition.model.UserInfoModel
 
@@ -22,16 +23,22 @@ import habibur.rahman.spark.tuition.model.UserInfoModel
 object CommonMethod {
 
     fun openUrl(context: Context, url: String) {
-        context.startActivity(Intent.createChooser(Intent(Intent.ACTION_VIEW, Uri.parse(url)), context.resources.getString(R.string.choose_one)))
+        context.startActivity(
+            Intent.createChooser(
+                Intent(Intent.ACTION_VIEW, Uri.parse(url)), context.resources.getString(
+                    R.string.choose_one
+                )
+            )
+        )
     }
 
     suspend fun loadPreviousUserInfoFromStorage(context: Context): String?  {
         val gson: Gson = Gson()
         var dataString: String?=null
         dataString=SharedPreUtils.getStringFromStorage(
-                context.applicationContext,
-                Constants.userInfoModelKey,
-                null
+            context.applicationContext,
+            Constants.userInfoModelKey,
+            null
         )
         return dataString
     }
@@ -40,7 +47,11 @@ object CommonMethod {
         val gson: Gson= Gson()
         val stringData: String=gson.toJson(model)
         Coroutines.io {
-            SharedPreUtils.setStringToStorage(context.applicationContext, Constants.userInfoModelKey, stringData)
+            SharedPreUtils.setStringToStorage(
+                context.applicationContext,
+                Constants.userInfoModelKey,
+                stringData
+            )
         }
     }
 
@@ -67,7 +78,11 @@ object CommonMethod {
             i.data = Uri.parse(url)
             context.startActivity(i)
         } catch (e: PackageManager.NameNotFoundException) {
-            Toast.makeText(context, context.resources.getString(R.string.whatsapp_not_installed), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                context.resources.getString(R.string.whatsapp_not_installed),
+                Toast.LENGTH_SHORT
+            ).show()
             e.printStackTrace()
         }
     }
@@ -102,9 +117,39 @@ object CommonMethod {
     fun openAppLink(context: Context) {
         val appPackageName: String=context.applicationContext.packageName
         try {
-            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+            context.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=$appPackageName")
+                )
+            )
         } catch (e: ActivityNotFoundException) {
-            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")))
+            context.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
+            )
+        }
+    }
+
+    fun encrypt(message: String): String {
+        return AESCrypt.encrypt(BuildConfig.SMTP_PASSWORD,message)
+    }
+
+    fun decrypt(message: String): String {
+        return AESCrypt.decrypt(BuildConfig.SMTP_PASSWORD,message)
+    }
+
+    fun filterMessage(message: String?): String {
+        if (message!=null) {
+            if (message.contains("app-special-domain.sparktuitionservice.com")) {
+                return message.replace("app-special-domain.sparktuitionservice.com","server")
+            } else {
+                return message
+            }
+        } else {
+            return " "
         }
     }
 
